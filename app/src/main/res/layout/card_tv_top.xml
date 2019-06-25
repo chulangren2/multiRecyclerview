@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widgt.TvCardTopView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:foreground="?selectableItemBackground"
+    android:orientation="vertical">
+
+    <widgt.NLFixedRatioLayout
+        android:id="@id/aspectRatioView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ratio="16:9">
+
+        <ImageView
+            android:id="@id/topImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"/>
+
+
+        <LinearLayout
+            android:id="@id/textContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center|left"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/tv_compact_text_padding_bottom"
+            android:paddingLeft="@dimen/full_card_default_text_left_right_padding">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@id/title"
+                style="@style/card_tv_title"
+                android:singleLine="true"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@id/subtitle"
+                style="@style/card_tv_subtitle"
+                android:layout_marginTop="5.0dip"
+                android:singleLine="true"/>
+        </LinearLayout>
+    </widgt.NLFixedRatioLayout>
+</widgt.TvCardTopView>

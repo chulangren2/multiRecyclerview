@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="multiRecyclerView" type="id"/>
+    <item name="recyclerViewBottom" type="id"/>
+    <item name="recyclerViewTop" type="id"/>
+    <item name="title" type="id"/>
+    <item name="subtitle" type="id"/>
+    <item name="aspectRatioView" type="id"/>
+    <item name="textContainer" type="id"/>
+    <item name="bottomImage" type="id"/>
+    <item name="topImage" type="id"/>
+</resources>
