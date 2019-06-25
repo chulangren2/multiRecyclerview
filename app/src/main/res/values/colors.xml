@@ -5,5 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="rb_white">#fff8f8f8</color>
     <color name="pure_black_40_opacity">#66000000</color>
+    <color name="black">#000000</color>
     <color name="card_title_color">@color/rb_white</color>
 </resources>
