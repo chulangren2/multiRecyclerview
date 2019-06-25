@@ -3,6 +3,7 @@ package widgt;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ public class TvAdapter extends RecyclerView.Adapter<TvViewHolder>
     {
         if(itemType == ItemType.TOPITEM){
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_tv_top,viewGroup,false);
+            Log.d("CardTop", "onCreateViewHolder");
             return new TvViewHolder(view);
         }else {
             View bottomView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_tv_bottom,viewGroup,false);
@@ -50,7 +52,10 @@ public class TvAdapter extends RecyclerView.Adapter<TvViewHolder>
     {
         Program program = list.get(position);
         if(itemType == ItemType.TOPITEM){
+            Log.d("CardTop", "onCreateViewHolder");
+
             TvCardTopView view = (TvCardTopView) viewHolder.itemView;
+            view.setTextContainerViewPadding();
             view.displayImage(program);
             view.displaySubtitle(program.getDes());
             view.displayTitle(program.getTitle());

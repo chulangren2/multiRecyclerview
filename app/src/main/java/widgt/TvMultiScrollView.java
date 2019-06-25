@@ -163,7 +163,7 @@ public class TvMultiScrollView extends FrameLayout
                 View bottomFirstVisibleView = holder.itemView;
 
                 Log.d(TAG,"322 bottomFirstVisibleView bottom ->" + bottomFirstVisibleView.getBottom());
-                float f = Float.valueOf(bottomFirstVisibleView.getBottom())/ bottomCardHeight;
+                float f = (float) bottomFirstVisibleView.getBottom() / bottomCardHeight;
                 Log.d(TAG,"bottomFirstVisibleView f ->" + f);
                 if (isFirstProgram[0] && f < 1)
                 {
@@ -187,22 +187,19 @@ public class TvMultiScrollView extends FrameLayout
                       " offset " +(int) (getTopCardHeight() * f));
                 layoutManagerTop.scrollToPositionWithOffset(bottomViewPosition, (int) (getTopCardHeight() * f));
 
-                //TODO update Top view scroll
-
                 ViewHolder topViewHolderFirst = topRecyclerView.findViewHolderForAdapterPosition(bottomFirstVisiblePosition);
                 if (topViewHolderFirst != null)
                 {
                     ((TvCardTopView)(topViewHolderFirst.itemView)).updateViewBasedOnScrollPosition(1-f,false);
 
+                    ViewHolder topViewHolderSecond = topRecyclerView.findViewHolderForAdapterPosition(bottomViewPosition);
+                    if (topViewHolderSecond == null)
+                    {
+                        Log.d("cardtop","top second null");
+                        return;
+                    }
+                    ((TvCardTopView)(topViewHolderSecond.itemView)).updateViewBasedOnScrollPosition(f,true);
                 }
-
-                ViewHolder topViewHolderSecond = topRecyclerView.findViewHolderForAdapterPosition(bottomViewPosition);
-                if (topViewHolderSecond == null)
-                {
-                    Log.d(TAG,"top second null");
-                    return;
-                }
-                ((TvCardTopView)(topViewHolderSecond.itemView)).updateViewBasedOnScrollPosition(f,true);
             }
         });
 

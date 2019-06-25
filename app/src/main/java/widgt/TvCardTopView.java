@@ -3,6 +3,8 @@ package widgt;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ public class TvCardTopView extends LinearLayout implements TvCardBaseView.ICardV
     private final int bottomCardHeight = getResources().getDimensionPixelSize(R.dimen.tv_compact_height);
     private final int heightOfBottomCardTextContainer = this.bottomCardHeight - this.baseTextPadding * 2;
     private final float parallaxRatio = 0.1F;
+
     public TvCardTopView(Context context, @Nullable AttributeSet attrs)
     {
         super(context, attrs);
@@ -36,7 +39,7 @@ public class TvCardTopView extends LinearLayout implements TvCardBaseView.ICardV
         if (imageView != null)
         {
             Glide.with(getContext()).load(program.getsImg()).centerCrop().into(imageView);
-//            imageView.setBackgroundColor(Color.parseColor(program.getColorStr()));
+            //            imageView.setBackgroundColor(Color.parseColor(program.getColorStr()));
 
         }
     }
@@ -80,16 +83,27 @@ public class TvCardTopView extends LinearLayout implements TvCardBaseView.ICardV
         int i = 1;
         if (paramBoolean)
         {
-            int j = (int)((1 - paramFloat) * this.bottomCardHeight - this.baseTextPadding);
-            int k = (int)(getHeight() * paramFloat);
+            int j = (int) ((1 - paramFloat) * this.bottomCardHeight - this.baseTextPadding);
+            int k = (int) (getHeight() * paramFloat);
             int m = this.heightOfBottomCardTextContainer;
             LinearLayout localLinearLayout = findViewById(R.id.textContainer);
             localLinearLayout.setPadding(localLinearLayout.getPaddingLeft(), 0, 0, k + j - m);
+            TextView textView = localLinearLayout.findViewById(R.id.subtitle);
+            Log.d("cardtop", "CardTop padding bottom + " + textView.getText() + "--" + (k + j - m));
         }
-        if (paramBoolean) {
+        if (paramBoolean)
+        {
             i = -1;
         }
         ImageView imageView = findViewById(R.id.topImage);
         imageView.setY(i * getHeight() * this.parallaxRatio * paramFloat);
+    }
+
+    public void setTextContainerViewPadding()
+    {
+        View view = findViewById(R.id.textContainer);
+        if(view != null){
+            view.setPadding(view.getPaddingLeft(),0,0,baseTextPadding);
+        }
     }
 }
