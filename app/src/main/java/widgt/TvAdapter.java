@@ -55,7 +55,7 @@ public class TvAdapter extends RecyclerView.Adapter<TvViewHolder>
             Log.d("CardTop", "onCreateViewHolder");
 
             TvCardTopView view = (TvCardTopView) viewHolder.itemView;
-            view.setTextContainerViewPadding();
+            view.resetTextContainerViewPadding();
             view.displayImage(program);
             view.displaySubtitle(program.getDes());
             view.displayTitle(program.getTitle());

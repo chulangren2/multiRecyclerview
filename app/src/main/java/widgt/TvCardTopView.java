@@ -99,7 +99,7 @@ public class TvCardTopView extends LinearLayout implements TvCardBaseView.ICardV
         imageView.setY(i * getHeight() * this.parallaxRatio * paramFloat);
     }
 
-    public void setTextContainerViewPadding()
+    public void resetTextContainerViewPadding()
     {
         View view = findViewById(R.id.textContainer);
         if(view != null){
